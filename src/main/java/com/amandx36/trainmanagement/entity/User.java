@@ -3,12 +3,16 @@ package com.amandx36.trainmanagement.entity;
 
 import com.amandx36.trainmanagement.enums.UserRole;
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
 @Table (name = "users")
 @Entity
+@Data
+
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
