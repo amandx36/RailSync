@@ -2,7 +2,6 @@ package com.amandx36.trainmanagement.AuthService.impl;
 
 import com.amandx36.trainmanagement.AuthService.AuthService;
 import com.amandx36.trainmanagement.config.JwtGenerator;
-import com.amandx36.trainmanagement.config.PasswordMatcher;
 import com.amandx36.trainmanagement.dto.reponse.AuthResponse;
 import com.amandx36.trainmanagement.dto.reponse.RegisterResponse;
 import com.amandx36.trainmanagement.dto.request.LoginRequest;
@@ -23,7 +22,7 @@ public class AuthServiceImpl implements AuthService {
     private final AuthRepository authRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtGenerator jwtGenerator;
-    private  final PasswordMatcher passwordMatcher ;
+
 
     @Override
     public RegisterResponse register(RegisterRequest request) {
@@ -55,36 +54,32 @@ public class AuthServiceImpl implements AuthService {
 
         return response;
     }
-
     @Override
     public AuthResponse login(LoginRequest request) {
-//        Receive email & password -> find user by email -> passwordEncoder -> generate jwt -> Return AuthResponse
-        AuthResponse authResponse = new AuthResponse();
 
-        if(!authRepository.existsByEmail(request.getEmail())){
-           authResponse.setMessage("Register first");
+        AuthResponse response = new AuthResponse();
 
-            return  authResponse;
+        Optional<User> optionalUser = authRepository.findByEmail(request.getEmail());
+
+        if (optionalUser.isEmpty()) {
+            response.setMessage("User not found");
+            return response;
         }
-       if(passwordMatcher.isValidPassword(request)){
-        authResponse.setMessage("Success");
-        java.util.Optional<User> user = authRepository.findByEmail(request.getEmail());
-    String token = jwtGenerator.generateToken(user.get());
-        authResponse.setToken(token);
-        User newUser = user.get();
-        authResponse.setRole(newUser.getRole().toString());
-        authResponse.setEmail(newUser.getEmail());
-        authResponse.setMessage("Success");
 
+        User user = optionalUser.get();
 
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+            response.setMessage("Invalid password");
+            return response;
+        }
 
-       }
+        String token = jwtGenerator.generateToken(user);
 
+        response.setEmail(user.getEmail());
+        response.setRole(user.getRole().name());
+        response.setToken(token);
+        response.setMessage("Login successful");
 
-
-        authResponse.setMessage("Error");
-
-        return  authResponse;
-
+        return response;
     }
 }
