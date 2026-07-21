@@ -18,7 +18,7 @@ public class User{
     private String firstName;
     private String lastName;
     @Enumerated(EnumType.STRING)
-    private UserRole role;m
+    private UserRole role;
     private LocalDateTime createdAt;
     private Boolean active;
 
