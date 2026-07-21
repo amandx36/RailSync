@@ -1,7 +1,7 @@
 package com.amandx36.trainmanagement.AuthService.impl;
 
 import com.amandx36.trainmanagement.AuthService.AuthService;
-import com.amandx36.trainmanagement.AuthService.JwtGenerator;
+import com.amandx36.trainmanagement.config.JwtGenerator;
 import com.amandx36.trainmanagement.dto.reponse.AuthResponse;
 import com.amandx36.trainmanagement.dto.reponse.RegisterResponse;
 import com.amandx36.trainmanagement.dto.request.LoginRequest;
@@ -10,7 +10,6 @@ import com.amandx36.trainmanagement.entity.User;
 import com.amandx36.trainmanagement.enums.UserRole;
 import com.amandx36.trainmanagement.repository.AuthRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.amandx36.trainmanagement.AuthService;
+package com.amandx36.trainmanagement.config;
 
 
 import com.amandx36.trainmanagement.entity.User;
