@@ -13,7 +13,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig{
-    // for buypassing the authentication
+    // for bypassing the authentication
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity)throws    Exception{
         System.out.println("Security loaded successfully");
