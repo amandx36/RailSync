@@ -1,4 +1,4 @@
-package com.amandx36.trainmanagement.AuthService;
+package com.amandx36.trainmanagement.services;
 
 import com.amandx36.trainmanagement.dto.reponse.AuthResponse;
 import com.amandx36.trainmanagement.dto.reponse.RegisterResponse;

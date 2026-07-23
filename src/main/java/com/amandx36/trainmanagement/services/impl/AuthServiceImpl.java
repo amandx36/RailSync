@@ -1,6 +1,6 @@
-package com.amandx36.trainmanagement.AuthService.impl;
+package com.amandx36.trainmanagement.services.impl;
 
-import com.amandx36.trainmanagement.AuthService.AuthService;
+import com.amandx36.trainmanagement.services.AuthService;
 import com.amandx36.trainmanagement.config.JwtGenerator;
 import com.amandx36.trainmanagement.dto.reponse.AuthResponse;
 import com.amandx36.trainmanagement.dto.reponse.RegisterResponse;
