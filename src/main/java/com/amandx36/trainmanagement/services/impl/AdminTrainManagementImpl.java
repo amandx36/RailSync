@@ -5,14 +5,14 @@ import com.amandx36.trainmanagement.dto.request.TrainRequest;
 import com.amandx36.trainmanagement.entity.Train;
 import com.amandx36.trainmanagement.mapper.TrainMapper;
 import com.amandx36.trainmanagement.repository.TrainRepository;
-import com.amandx36.trainmanagement.services.TrainService;
+import com.amandx36.trainmanagement.services.ADMINTrainManagement;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
+@Service
 @AllArgsConstructor
-public class TrainServiceImpl implements TrainService {
+public class AdminTrainManagementImpl implements ADMINTrainManagement {
     final TrainRepository trainRepository ;
 
     @Override
