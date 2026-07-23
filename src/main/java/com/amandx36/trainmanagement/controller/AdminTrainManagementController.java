@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("api/v1/admin")
+@RequestMapping("api/v1")
 @AllArgsConstructor
 public class AdminTrainManagementController {
-    
+
     private  final ADMINTrainManagement adminTrainManagement;
     @PostMapping("/add-train")
     public ResponseEntity<TrainResponse> register(
