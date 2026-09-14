@@ -3,11 +3,9 @@ package com.amandx36.trainmanagement.entity;
 
 import com.amandx36.trainmanagement.enums.UserRole;
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Table (name = "users")
 @Entity
@@ -17,13 +15,16 @@ public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    String email ;
-    private  String Password ;
+    @Column(nullable = false, unique = true)
+    private String email;
+    @Column(nullable = false)
+    private String password;
     private String firstName;
     private String lastName;
     @Enumerated(EnumType.STRING)
     private UserRole role;
     private LocalDateTime createdAt;
+    @Column(nullable = false)
     private Boolean active;
 
 }

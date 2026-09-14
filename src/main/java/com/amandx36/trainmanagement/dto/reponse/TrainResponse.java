@@ -10,7 +10,7 @@ import lombok.*;
 @AllArgsConstructor
 public class TrainResponse {
 
-   private Integer id;
+   private Long id;
    private Integer trainNumber;
    private String trainName;
    private TrainType trainType;
