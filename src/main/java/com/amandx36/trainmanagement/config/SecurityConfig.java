@@ -25,11 +25,12 @@ public class SecurityConfig{
                 .csrf(csrf->csrf.disable())
                 .authorizeHttpRequests(auth->auth
                         .requestMatchers("/api/v1/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/add-train").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/api/v1/trains/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PATCH, "/api/v1/trains/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/v1/trains/**").hasRole("ADMIN")
-                        .requestMatchers("/api/v1/**").authenticated()
+                        // adm,in methods for train management
+                        .requestMatchers(HttpMethod.POST, "/api/v1/add-train").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/trains/**").permitAll()
+                        .requestMatchers(HttpMethod.PATCH, "/api/v1/trains/**").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/trains/**").permitAll()
+                        .requestMatchers("/api/v1/**").permitAll()
                         .anyRequest().authenticated()
                     )
                     .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
